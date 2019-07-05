@@ -1,0 +1,24 @@
+{
+  "name": "reactecommerce",
+  "version": "1.0.0",
+  "description": "FullStack React Node MongoDB powered E-Commerce App with PayPal and Credit Card Payment",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcwa/reactecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielcwa/reactecommerce/issues"
+  },
+  "homepage": "https://github.com/gabrielcwa/reactecommerce#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  }
+}
