@@ -30,7 +30,7 @@ exports.signin = (req, res) => {
                 err: "User with that email does not exist. Please signup"
             })
         }
-        // if user is found make sure the email and passworde match
+        // if user is found make sure the email and password match
         // create authenticate method in user model
         if (!user.authenticate(password)) {
             return res.status(402).json({
@@ -71,8 +71,8 @@ exports.isAuth = (req, res, next) => {
 }
 
 exports.isAdmin = (req, res, next) => {
-    console.log(req.profile.role)
-    if (req.profile.role == 0) {
+    const admin = 1
+    if (req.profile && req.profile.role != admin) {
         return res.status(403).json({
             error: "Admin resourse! Access denied!"
         })
