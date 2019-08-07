@@ -3,6 +3,26 @@ const { errorHandler } = require("../helpers/dbErrorHandler")
 const jwt = require("jsonwebtoken") // to generate signed token
 const expressJwt = require("express-jwt") // for authorization check
 
+exports.read = (req, res) => {
+    req.profile.hashed_password = undefined
+    req.profile.salt = undefined
+    return res.json(req.profile)
+}
+
+exports.update = (req, res) => {
+    User.findByIdAndUpdate({ _id: req.profile._id }, { $set: req.body }, { new: true },
+        (err, user) => {
+            if (err) {
+                return res.status(400).json({
+                    error: "You are not authorized to perform this action"
+                })
+            }
+            user.hashed_password = undefined
+            user.salt = undefined
+            res.json(user)
+        })
+}
+
 exports.signup = (req, res) => {
     const user = new User(req.body)
 
